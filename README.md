@@ -1,0 +1,2 @@
+# VueSyncBlocker
+VueSyncBlocker for vue

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>VueSyncBlocker</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<style>
+    .btn {
+
+        background: #2b81af;
+        color: #fff;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #006600;
+        color: #fff;
+    }
+
+
+</style>
+<body>
+
+
+<div id="example" class="full">
+
+    <div style="position: relative;width: 300px;height: 500px;border: 1px solid #000">
+        <div class="btn" @click="show=true">show</div>
+        <sync-blocker :show.sync="show" :normal="{opacity:1,transition: 'all 0.3s ease'}"  :msg-normal="{height:30,opacity:1,transition: 'all 0.3s ease'}" :msg-leave="{height:0,opacity:0}" :msg-enter="{height:0,opacity:0}">
+          <div style="padding: 6px;background: #0086b3;color: #fff">
+              {{msg}}
+          </div>
+        </sync-blocker>
+
+    </div>
+    <div class="btn" @click="show=false">hide</div>
+    <div class="btn" @click="showMessage">msg</div>
+
+
+
+</div>
+
+<script src="dist/vue.min.js"></script>
+<script src="dist/smart.min.js"></script>
+<script src="dist/vue-sync-blocker.js"></script>
+
+<script>
+
+    Smart.Css.createSmartCssStyle('.blur', {filter: 'blur(0px);'});
+    // Smart.Css.smartCss(document.querySelector('.blur'),{filter:'blur(10px);',width:'100%'});
+    new Vue({
+        el: 'body',
+        components: {
+            SyncBlocker: VueSyncBlocker
+        },
+        data: {
+            page: 1, show: true, msg: 'go'
+        },
+        methods: {
+            showMessage:function () {
+                this.msg=Math.random();
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>
