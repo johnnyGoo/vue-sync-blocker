@@ -11,6 +11,7 @@
     .vue-sync-blocker-msg {
         overflow: hidden;
         position: relative;
+        clear: both;
     }
 </style>
 <template>
